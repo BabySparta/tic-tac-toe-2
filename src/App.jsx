@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Board from './components/Board'
 import './App.css'
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-      <div></div>
+      <Board />
     </>
   )
 }
