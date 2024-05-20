@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 import { calculateWinner } from "../utils/calculateWinner";
 import Board from "./Board";
+import { getBestMove } from "../utils/minimax";
 
 function Game() {
   const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setxIsNext] = useState(true);
 
   const handleClick = (i) => {
     const newSquares = squares.slice();
 
     if (calculateWinner(squares) || newSquares[i]) return;
 
-    newSquares[i] = xIsNext ? "X" : "O";
+    newSquares[i] = "X";
 
-    setxIsNext(!xIsNext);
+    
+    const bestMove = getBestMove(newSquares);
+    if (bestMove !== -1) {
+      newSquares[bestMove] = 'O';
+    }
+
     setSquares(newSquares);
   }
 
   const resetGame = () => {
     setSquares(Array(9).fill(null));
-    setxIsNext(true);
   }
 
   const winner = calculateWinner(squares);
@@ -28,9 +32,9 @@ function Game() {
   if (winner === "Draw") {
     status = "It's A Draw";
   } else if(winner) {
-    status = "Winner: " + winner
+    status = "The AI Overlord Wins Again";
   } else {
-    status = (xIsNext ? "X" : "O") + "'s Turn"
+    status = "Your Turn";
   }
 
   return (
