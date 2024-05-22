@@ -1,25 +1,14 @@
-import { useState } from "react";
-import React from "react";
-import Square from "./Square";
-import "./Board.css";
+import React from 'react';
+import Square from './Square';
 
-function Board({ onClick, squares }) {
-  const renderSquare = (i) => (
-    <Square onClick={() => onClick(i)} id={squares[i]} />
-  );
+const Board = ({ squares, onClick }) => {
   return (
     <div className="board">
-      {renderSquare(0)}
-      {renderSquare(1)}
-      {renderSquare(2)}
-      {renderSquare(3)}
-      {renderSquare(4)}
-      {renderSquare(5)}
-      {renderSquare(6)}
-      {renderSquare(7)}
-      {renderSquare(8)}
+      {squares.map((square, i) => (
+        <Square key={i} id={square} onClick={() => onClick(i)} />
+      ))}
     </div>
   );
-}
+};
 
 export default Board;

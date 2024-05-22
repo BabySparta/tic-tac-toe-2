@@ -2,7 +2,7 @@ import React from "react";
 
 function Square({ id, onClick }) {
   return (
-    <div className="cell" id={id} onClick={onClick}>{id}</div>
+    <div className="square" id={id} onClick={onClick}>{id}</div>
   )
 }
 

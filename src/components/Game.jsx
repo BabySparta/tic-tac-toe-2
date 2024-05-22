@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { calculateWinner } from "../utils/calculateWinner";
 import Board from "./Board";
 import { getBestMove } from "../utils/minimax";
+import "../App.css";
 
 function Game() {
   const [squares, setSquares] = useState(Array(9).fill(null));
